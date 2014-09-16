@@ -12,4 +12,4 @@ real time demo  data entry application using sails js,angular and bootstrap
 - 
 ## Demo
 
-goo.gl/FX8uYH
+http://goo.gl/FX8uYH
