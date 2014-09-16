@@ -1,0 +1,65 @@
+
+<div ng-controller="firstcontroller"  >
+<form action="#"  name = "first-form" class="form-inline" role="form" style="margin:30px;margin-left:5%;"  ng-submit="createUser();">
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputEmail2">Email address</label>
+    <input ng-model="first.email" type="text" class="form-control" id="exampleInputEmail2" placeholder="Enter email" required >
+  </div>
+ 
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputPassword2">Name</label>
+    <input ng-model="first.nickname" type="text" class="form-control" id="exampleInputPassword2" placeholder="Name" required>
+  </div>
+ 
+  <button  ng-disabled="first-form.$invalid" type="submit" class="btn btn-default">Save</button>
+</form>
+
+<b style="margin-left:5%;">Search</b>
+<input style="margin:30px; margin-left:5%; width:10%;"  class="form-control" type="text" ng-model="user.search" />
+  <table class="table table-bordered" style="margin-left:5%; width:90%;">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nick Name</th>
+          <th>Email</th>
+          <th>Action</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in users | filter:user.search">
+                <td >{{$index + 1}}</td>
+                <td class="nickname" contenteditable="true">{{user.nickname}}</td>
+                <td class="email" contenteditable="true">{{user.email}}</td>
+                <td>
+                   <button ng-click="delete($index)" type="button" class="btn btn-danger">Delete</button>
+                   <button ng-click="edit($index)" type="button" class="btn btn-warning">Edit</button>
+                 </td>
+        </tr>
+   
+      </tbody>
+    </table>
+<img style="margin:30px;margin-left:5%;" alt="Embedded video" width="680" height="420" src="data:image/png;base64,{{shot}}" />
+
+
+<script type="text/ng-template" id="templateId">
+        <form ng-show="edit.id" ng-submit="editUser();" action="#"  name = "first-form-edit" class="form-inline" role="form" style="margin:30px;" >
+  <div class=" model_input form-group " style="margin-bottom: 10px;">
+    <label class="sr-only" for="exampleInputEmail2">Email address</label>
+    <input ng-model="edit.email" type="text" class="form-control"  placeholder="Name" value="{{edit.email}}" />
+  </div>
+ 
+  <div  class=" model_input form-group" style="margin-bottom: 10px;">
+    <label class="sr-only" for="exampleInputPassword2">Name</label>
+    <input ng-model="edit.nickname"   type="text" class="form-control"  placeholder="Name" value="{{edit.nickname}}" />
+  </div>
+  <p>
+  <div  class=" model_input form-group">
+  <button  type="submit" class="btn btn-default">Edit</button>
+  </div>
+</form>
+</script>
+
+
+</div>
+
